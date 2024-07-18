@@ -39,7 +39,7 @@ RUN python3 --version && \
 # [1]: https://github.com/pypa/setuptools/issues/3301
 
 # Set LANG environment
-ENV LANG C.UTF-8
+ENV LANG=C.UTF-8
 
 # Set the working directory
 WORKDIR /srv
@@ -61,7 +61,7 @@ RUN git clone https://github.com/ai4os/deep-start /srv/.deep-start && \
     ln -s /srv/.deep-start/deep-start.sh /usr/local/bin/deep-start
 
 # Necessary for the Jupyter Lab terminal
-ENV SHELL /bin/bash
+ENV SHELL=/bin/bash
 
 # Install user app
 RUN git clone --depth 1 -b $branch https://github.com/ai4os-hub/litter-assessment && \
@@ -70,8 +70,8 @@ RUN git clone --depth 1 -b $branch https://github.com/ai4os-hub/litter-assessmen
      cd ..
 
 # Download network weights
-ENV SWIFT_CONTAINER https://data-deep.a.incd.pt/index.php/s/Zsz2NLxPjb52s5y/download/
-ENV MODEL_TAR aplastic_q_models.tar.gz
+ENV SWIFT_CONTAINER=https://data-deep.a.incd.pt/index.php/s/Zsz2NLxPjb52s5y/download/
+ENV MODEL_TAR=aplastic_q_models.tar.gz
 
 RUN curl --insecure -o ./litter-assessment/models/${MODEL_TAR} \
     ${SWIFT_CONTAINER}${MODEL_TAR}
