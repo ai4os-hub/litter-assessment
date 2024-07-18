@@ -3,7 +3,7 @@
 
 Integration of DeepaaS API and litter assessment software
 
-To launch it, first install the package then run [deepaas](https://github.com/indigo-dc/DEEPaaS):
+To launch it, first install the package then run [deepaas](https://github.com/ai4os/DEEPaaS):
 ```bash
 git clone https://github.com/DFKI-NI/litter_assessment_service
 cd litter_assessment_service
