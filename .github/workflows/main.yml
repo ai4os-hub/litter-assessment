@@ -4,7 +4,7 @@
 # [!] Note: Do not do a force push to not overwrite the .github/workflow/main.yml file.
 
 # We are not using a predefined action (eg. [1]) to not go through the hassle of having to
-# manage Github Personal Access Tokens for deephdc.
+# manage Github Personal Access Tokens for your account.
 # [1]: https://github.com/repo-sync/github-sync
 
 
@@ -36,7 +36,7 @@ jobs:
           # YOU SHOULD UPDATE THIS LINE
           #########################################################
 
-          UPSTREAM_REPO=https://github.com/DFKI-NI/litter_assessment_service.git
+          UPSTREAM_REPO=https://github.com/ai4os-hub/litter-assessment.git
 
           #########################################################
 
