@@ -57,15 +57,15 @@ ENV RCLONE_CONFIG=/srv/.rclone/rclone.conf
 
 # Initialization scripts
 # deep-start can install JupyterLab or VSCode if requested
-RUN git clone https://github.com/deephdc/deep-start /srv/.deep-start && \
+RUN git clone https://github.com/ai4os/deep-start /srv/.deep-start && \
     ln -s /srv/.deep-start/deep-start.sh /usr/local/bin/deep-start
 
 # Necessary for the Jupyter Lab terminal
 ENV SHELL /bin/bash
 
 # Install user app
-RUN git clone --depth 1 -b $branch https://github.com/DFKI-NI/litter_assessment_service && \
-     cd  litter_assessment_service && \
+RUN git clone --depth 1 -b $branch https://github.com/ai4os-hub/litter-assessment && \
+     cd  litter-assessment && \
      pip3 install --no-cache-dir -e . && \
      cd ..
 
@@ -73,15 +73,15 @@ RUN git clone --depth 1 -b $branch https://github.com/DFKI-NI/litter_assessment_
 ENV SWIFT_CONTAINER https://data-deep.a.incd.pt/index.php/s/Zsz2NLxPjb52s5y/download/
 ENV MODEL_TAR aplastic_q_models.tar.gz
 
-RUN curl --insecure -o ./litter_assessment_service/models/${MODEL_TAR} \
+RUN curl --insecure -o ./litter-assessment/models/${MODEL_TAR} \
     ${SWIFT_CONTAINER}${MODEL_TAR}
 
-RUN cd litter_assessment_service/models && \
+RUN cd litter-assessment/models && \
      tar -xf ${MODEL_TAR}
 
-RUN cd litter_assessment_service
+RUN cd /srv/litter-assessment
 
-# Open ports: DEEPaaS (5000), Monitoring (6006), IDE (8888)
+# Open ports (deepaas, monitoring, ide)
 EXPOSE 5000 6006 8888
 
 # Launch deepaas
