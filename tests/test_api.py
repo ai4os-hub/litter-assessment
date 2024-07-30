@@ -23,19 +23,6 @@ from litter_assessment_service import preprocessing
 BASE_PATH = os.path.dirname(os.path.normpath(os.path.dirname(__file__)))
 TEST_PATH = os.path.join(BASE_PATH, "tests")
 
-PLD_model=None
-PLQ_model=None
-
-def warm():
-    """
-    Load the models for detection and quantification before requests to the API are made
-    """
-    global model_PLD, model_PLQ
-    model_name_PLD = "litter-assessment/models/PLD_CNN.h5"
-    model_name_PLQ = "litter-assessment/models/PLQ_CNN.h5"
-    model_PLD = preprocessing.warm(model_name_PLD)
-    model_PLQ = preprocessing.warm(model_name_PLQ)
-
 def test_get_metadata():
     meta = api.get_metadata()
     assert type(meta) is dict
@@ -68,7 +55,6 @@ def test_predict_bytes():
     api.predict(**kwargs)
 
 def main():
-    warm()
     test_get_metadata()
     test_predict_bytes()
     test_predict_zip()
