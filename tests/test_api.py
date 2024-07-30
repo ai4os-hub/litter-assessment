@@ -28,7 +28,7 @@ def test_get_metadata():
 
 def test_predict_single_im():
     test_data_path=os.path.join(TEST_PATH,'data','samples')
-    file_path=os.path.join(test_data_path, 'test_image.JPG')
+    file_path=os.path.join(test_data_path, 'test_image.png')
     tmp_fpath = os.path.join(test_data_path, 'tmp_file.jpg')
     shutil.copyfile(file_path, tmp_fpath)
     file = UploadedFile(name='data', filename=tmp_fpath, content_type='image/jpg', original_filename='test_image')
@@ -37,7 +37,7 @@ def test_predict_single_im():
 
 def test_predict_zip():
     test_data_path=os.path.join(TEST_PATH, 'data','samples')
-    file_path=os.path.join(test_data_path, 'samples.zip')
+    file_path=os.path.join(test_data_path, 'test_images.zip')
     tmp_fpath = os.path.join(test_data_path, 'tmp_file.zip')
     shutil.copyfile(file_path, tmp_fpath)
     file = UploadedFile(name='data', filename=tmp_fpath, content_type='application/zip', original_filename='test_zip')
@@ -46,7 +46,7 @@ def test_predict_zip():
 
 def test_predict_bytes():
     test_data_path=os.path.join(TEST_PATH, 'data','samples')
-    file_path=os.path.join(test_data_path, 'test_image.JPG')
+    file_path=os.path.join(test_data_path, 'test_image.png')
     image=open(os.path.join(os.getcwd(), 'test_images', file_path), 'rb')
     bin_image = image.read()
     file = UploadedFile(name='data', filename=bin_image, content_type='application/octet-stream', original_filename='test_image.JPG')
