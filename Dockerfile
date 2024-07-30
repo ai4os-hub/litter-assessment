@@ -19,7 +19,7 @@ LABEL version='0.0.1'
 # Integration of DeepaaS API and litter assessment software
 
 # What user branch to clone [!]
-ARG branch=main
+ARG branch=fix/unit_api_tests
 
 # Install Ubuntu packages
 # - gcc is needed in Pytorch images because deepaas installation might break otherwise (see docs) (it is already installed in tensorflow images)
@@ -70,8 +70,8 @@ RUN git clone --depth 1 -b $branch https://github.com/ai4os-hub/litter-assessmen
      cd ..
 
 # Download network weights
-ENV SWIFT_CONTAINER=https://data-deep.a.incd.pt/index.php/s/Zsz2NLxPjb52s5y/download/
-ENV MODEL_TAR=aplastic_q_models.tar.gz
+ENV SWIFT_CONTAINER=https://share.services.ai4os.eu/index.php/s/HQmXS7mcDK82sz3/download/
+ENV MODEL_TAR=models.tar.gz
 
 RUN curl --insecure -o ./litter-assessment/models/${MODEL_TAR} \
     ${SWIFT_CONTAINER}${MODEL_TAR}
