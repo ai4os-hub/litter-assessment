@@ -121,8 +121,8 @@ def warm():
     Load the models for detection and quantification before requests to the API are made
     """
     global model_PLD, model_PLQ
-    model_name_PLD = "litter_assessment_service/models/PLD_CNN.h5"
-    model_name_PLQ = "litter_assessment_service/models/PLQ_CNN.h5"
+    model_name_PLD = "litter-assessment/models/PLD_CNN.h5"
+    model_name_PLQ = "litter-assessment/models/PLQ_CNN.h5"
     model_PLD = preprocessing.warm(model_name_PLD)
     model_PLQ = preprocessing.warm(model_name_PLQ)
 
