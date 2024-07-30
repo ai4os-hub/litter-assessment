@@ -148,7 +148,7 @@ def return_plot(**kwargs):
     fig.savefig(f'{kwargs["output_path"]}_{kwargs["type"]}.jpg')
 
 
-@_catch_error
+#@_catch_error
 def predict(**kwargs):
     """
     Run inference on uploaded image(s) and run "save_plot(**kwargs)" 
