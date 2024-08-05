@@ -83,14 +83,14 @@ def main():
 
         # dearchive downloaded .tar.gz file
         with tarfile.open(models_archived, 'r:gz') as ms:
-            ms.extractall("./") # OR use BASE_PATH/models
+            ms.extractall(f"{BASE_PATH}/models")
+            #ms.extractall("./") # OR use BASE_PATH/models
 
         # may delete the *tar.gz afterwards
         os.remove(models_archived)
     except Exception as err:
         logging.error(f"Unexpected {err=}, {type(err)=}")
 
-    print(f'downloaded models archived under: {models_archived}')
     api.warm()
     test_get_metadata()
     test_predict_bytes()
