@@ -36,8 +36,8 @@ def test_predict_single_im():
     try:
     # call download_file function
         models_archived = download_file(models_url)
-        logging.debug(f'extracting the model successfull! for predicting single_im')
-        logging.debug(f'extracting model to: {BASE_PATH}/models')
+        print(f'extracting the model successfull! for predicting single_im')
+        print(f'extracting model to: {BASE_PATH}/models')
 
         # dearchive downloaded .tar.gz file
         with tarfile.open(models_archived, 'r:gz') as ms:
@@ -62,8 +62,8 @@ def test_predict_zip():
     try:
     # call download_file function
         models_archived = download_file(models_url)
-        logging.debug(f'extracting the model successfull! for predicting zip')
-        logging.debug(f'extracting model to: {BASE_PATH}/models')
+        print(f'extracting the model successfull! for predicting zip')
+        print(f'extracting model to: {BASE_PATH}/models')
 
         # dearchive downloaded .tar.gz file
         with tarfile.open(models_archived, 'r:gz') as ms:
@@ -88,8 +88,8 @@ def test_predict_bytes():
     try:
     # call download_file function
         models_archived = download_file(models_url)
-        logging.debug(f'extracting the model successfull! for predicting bytes')
-        logging.debug(f'extracting model to: {BASE_PATH}/models')
+        print(f'extracting the model successfull! for predicting bytes')
+        print(f'extracting model to: {BASE_PATH}/models')
         # dearchive downloaded .tar.gz file
         with tarfile.open(models_archived, 'r:gz') as ms:
             ms.extractall(f"{BASE_PATH}/models")
