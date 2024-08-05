@@ -90,6 +90,8 @@ def main():
     except Exception as err:
         logging.error(f"Unexpected {err=}, {type(err)=}")
 
+    print(f'downloaded models archived under: {models_archived}')
+    api.warm()
     test_get_metadata()
     test_predict_bytes()
     test_predict_zip()
