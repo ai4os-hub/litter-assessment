@@ -42,6 +42,7 @@ def test_predict_single_im():
             ms.extractall(f"{BASE_PATH}/models")
 
         # may delete the *tar.gz afterwards
+        print(f'extracting the model successfull!')
         os.remove(models_archived)
     except Exception as err:
         logging.error(f"Unexpected {err=}, {type(err)=}")
@@ -67,6 +68,7 @@ def test_predict_zip():
             ms.extractall(f"{BASE_PATH}/models")
 
         # may delete the *tar.gz afterwards
+        print(f'extracting the model successfull!')
         os.remove(models_archived)
     except Exception as err:
         logging.error(f"Unexpected {err=}, {type(err)=}")
@@ -82,16 +84,17 @@ def test_predict_zip():
 
 def test_predict_bytes():
     models_url = "https://share.services.ai4os.eu/index.php/s/HQmXS7mcDK82sz3/download/models.tar.gz"
-
+    logging.basicConfig(level=logging.DEBUG, format="%(levelname)s: %(message)s")
     try:
     # call download_file function
         models_archived = download_file(models_url)
-
+        logging.debug(f'extracting model to: {BASE_PATH}/models')
         # dearchive downloaded .tar.gz file
         with tarfile.open(models_archived, 'r:gz') as ms:
             ms.extractall(f"{BASE_PATH}/models")
 
         # may delete the *tar.gz afterwards
+        logging.debug(f'extracting the model successfull!')
         os.remove(models_archived)
     except Exception as err:
         logging.error(f"Unexpected {err=}, {type(err)=}")
@@ -138,6 +141,7 @@ def main():
     # except Exception as err:
     #     logging.error(f"Unexpected {err=}, {type(err)=}")
 
+    print(f'saving the models under: {BASE_PATH}/models')
     test_get_metadata()
     test_predict_bytes()
     test_predict_zip()

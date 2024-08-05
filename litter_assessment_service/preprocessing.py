@@ -9,8 +9,7 @@ def warm(model_name):
     load keras model
     """
     wd = os.getcwd()
-    #path = os.path.join(wd, model_name)
-    path=model_name
+    path = os.path.join(wd, model_name)
     model = load_model(path)
     return model
 
