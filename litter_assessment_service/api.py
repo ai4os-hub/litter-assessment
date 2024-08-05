@@ -130,8 +130,8 @@ def get_arr_from_bin(image_file):
     """
     Convert path to image_file to np.array
     """
-    image=open(image_file,'rb')
-    image_file=image.read()
+    #image=open(image_file,'rb')
+    #image_file=image.read()
     image_or= Image.open(io.BytesIO(image_file))
     return np.array(image_or).astype(np.uint8)
 
