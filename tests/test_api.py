@@ -41,8 +41,6 @@ def test_predict_single_im():
         with tarfile.open(models_archived, 'r:gz') as ms:
             ms.extractall(f"{BASE_PATH}/models")
 
-        # may delete the *tar.gz afterwards
-        print(f'extracting the model successfull!')
         os.remove(models_archived)
     except Exception as err:
         logging.error(f"Unexpected {err=}, {type(err)=}")
@@ -66,9 +64,7 @@ def test_predict_zip():
         # dearchive downloaded .tar.gz file
         with tarfile.open(models_archived, 'r:gz') as ms:
             ms.extractall(f"{BASE_PATH}/models")
-
-        # may delete the *tar.gz afterwards
-        print(f'extracting the model successfull!')
+        
         os.remove(models_archived)
     except Exception as err:
         logging.error(f"Unexpected {err=}, {type(err)=}")
@@ -94,7 +90,7 @@ def test_predict_bytes():
             ms.extractall(f"{BASE_PATH}/models")
 
         # may delete the *tar.gz afterwards
-        logging.debug(f'extracting the model successfull!')
+        #logging.debug(f'extracting the model successfull!')
         os.remove(models_archived)
     except Exception as err:
         logging.error(f"Unexpected {err=}, {type(err)=}")
