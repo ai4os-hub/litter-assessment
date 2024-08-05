@@ -36,12 +36,9 @@ def test_predict_single_im():
     try:
     # call download_file function
         models_archived = download_file(models_url)
-        print(f'extracting the model successfull! for predicting single_im')
-        print(f'extracting model to: {BASE_PATH}/models')
-
         # dearchive downloaded .tar.gz file
         with tarfile.open(models_archived, 'r:gz') as ms:
-            ms.extractall(f"{BASE_PATH}/models")
+            ms.extractall(f"{BASE_PATH}/litter-assessment/models")
 
         os.remove(models_archived)
     except Exception as err:
@@ -63,7 +60,7 @@ def test_predict_zip():
     # call download_file function
         models_archived = download_file(models_url)
         print(f'extracting the model successfull! for predicting zip')
-        print(f'extracting model to: {BASE_PATH}/models')
+        print(f'extracting model to: {BASE_PATH}/litter-assessment/models')
 
         # dearchive downloaded .tar.gz file
         with tarfile.open(models_archived, 'r:gz') as ms:
@@ -88,14 +85,11 @@ def test_predict_bytes():
     try:
     # call download_file function
         models_archived = download_file(models_url)
-        print(f'extracting the model successfull! for predicting bytes')
-        print(f'extracting model to: {BASE_PATH}/models')
         # dearchive downloaded .tar.gz file
         with tarfile.open(models_archived, 'r:gz') as ms:
-            ms.extractall(f"{BASE_PATH}/models")
+            ms.extractall(f"{BASE_PATH}/litter-assessment/models")
 
         # may delete the *tar.gz afterwards
-        #logging.debug(f'extracting the model successfull!')
         os.remove(models_archived)
     except Exception as err:
         logging.error(f"Unexpected {err=}, {type(err)=}")
