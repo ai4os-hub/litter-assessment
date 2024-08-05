@@ -31,6 +31,7 @@ def test_get_metadata():
     assert type(meta) is dict
 
 def test_predict_single_im():
+    api.warm()
     test_data_path=os.path.join(TEST_PATH,'data','samples')
     file_path=os.path.join(test_data_path, 'test_image.png')
     tmp_fpath = os.path.join(test_data_path, 'tmp_file.jpg')
@@ -40,6 +41,7 @@ def test_predict_single_im():
     api.predict(**kwargs)
 
 def test_predict_zip():
+    api.warm()
     test_data_path=os.path.join(TEST_PATH, 'data','samples')
     file_path=os.path.join(test_data_path, 'test_images.zip')
     tmp_fpath = os.path.join(test_data_path, 'tmp_file.zip')
@@ -49,6 +51,7 @@ def test_predict_zip():
     api.predict(**kwargs)
 
 def test_predict_bytes():
+    api.warm()
     test_data_path=os.path.join(TEST_PATH, 'data','samples')
     file_path=os.path.join(test_data_path, 'test_image.png')
     image=open(os.path.join(os.getcwd(), 'test_images', file_path), 'rb')
@@ -84,14 +87,12 @@ def main():
         # dearchive downloaded .tar.gz file
         with tarfile.open(models_archived, 'r:gz') as ms:
             ms.extractall(f"{BASE_PATH}/models")
-            #ms.extractall("./") # OR use BASE_PATH/models
 
         # may delete the *tar.gz afterwards
         os.remove(models_archived)
     except Exception as err:
         logging.error(f"Unexpected {err=}, {type(err)=}")
 
-    api.warm()
     test_get_metadata()
     test_predict_bytes()
     test_predict_zip()
