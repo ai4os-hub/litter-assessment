@@ -31,6 +31,21 @@ def test_get_metadata():
     assert type(meta) is dict
 
 def test_predict_single_im():
+    models_url = "https://share.services.ai4os.eu/index.php/s/HQmXS7mcDK82sz3/download/models.tar.gz"
+
+    try:
+    # call download_file function
+        models_archived = download_file(models_url)
+
+        # dearchive downloaded .tar.gz file
+        with tarfile.open(models_archived, 'r:gz') as ms:
+            ms.extractall(f"{BASE_PATH}/models")
+
+        # may delete the *tar.gz afterwards
+        os.remove(models_archived)
+    except Exception as err:
+        logging.error(f"Unexpected {err=}, {type(err)=}")
+
     api.warm()
     test_data_path=os.path.join(TEST_PATH,'data','samples')
     file_path=os.path.join(test_data_path, 'test_image.png')
@@ -41,6 +56,21 @@ def test_predict_single_im():
     api.predict(**kwargs)
 
 def test_predict_zip():
+    models_url = "https://share.services.ai4os.eu/index.php/s/HQmXS7mcDK82sz3/download/models.tar.gz"
+
+    try:
+    # call download_file function
+        models_archived = download_file(models_url)
+
+        # dearchive downloaded .tar.gz file
+        with tarfile.open(models_archived, 'r:gz') as ms:
+            ms.extractall(f"{BASE_PATH}/models")
+
+        # may delete the *tar.gz afterwards
+        os.remove(models_archived)
+    except Exception as err:
+        logging.error(f"Unexpected {err=}, {type(err)=}")
+
     api.warm()
     test_data_path=os.path.join(TEST_PATH, 'data','samples')
     file_path=os.path.join(test_data_path, 'test_images.zip')
@@ -51,6 +81,21 @@ def test_predict_zip():
     api.predict(**kwargs)
 
 def test_predict_bytes():
+    models_url = "https://share.services.ai4os.eu/index.php/s/HQmXS7mcDK82sz3/download/models.tar.gz"
+
+    try:
+    # call download_file function
+        models_archived = download_file(models_url)
+
+        # dearchive downloaded .tar.gz file
+        with tarfile.open(models_archived, 'r:gz') as ms:
+            ms.extractall(f"{BASE_PATH}/models")
+
+        # may delete the *tar.gz afterwards
+        os.remove(models_archived)
+    except Exception as err:
+        logging.error(f"Unexpected {err=}, {type(err)=}")
+
     api.warm()
     test_data_path=os.path.join(TEST_PATH, 'data','samples')
     file_path=os.path.join(test_data_path, 'test_image.png')
@@ -74,24 +119,24 @@ def download_file(url):
     return local_filename
 
 def main():
-    # just python logging
-    logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
+    # # just python logging
+    # logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 
-    # URL to the models file
-    models_url = "https://share.services.ai4os.eu/index.php/s/HQmXS7mcDK82sz3/download/models.tar.gz"
+    # # URL to the models file
+    # models_url = "https://share.services.ai4os.eu/index.php/s/HQmXS7mcDK82sz3/download/models.tar.gz"
 
-    try:
-    # call download_file function
-        models_archived = download_file(models_url)
+    # try:
+    # # call download_file function
+    #     models_archived = download_file(models_url)
 
-        # dearchive downloaded .tar.gz file
-        with tarfile.open(models_archived, 'r:gz') as ms:
-            ms.extractall(f"{BASE_PATH}/models")
+    #     # dearchive downloaded .tar.gz file
+    #     with tarfile.open(models_archived, 'r:gz') as ms:
+    #         ms.extractall(f"{BASE_PATH}/models")
 
-        # may delete the *tar.gz afterwards
-        os.remove(models_archived)
-    except Exception as err:
-        logging.error(f"Unexpected {err=}, {type(err)=}")
+    #     # may delete the *tar.gz afterwards
+    #     os.remove(models_archived)
+    # except Exception as err:
+    #     logging.error(f"Unexpected {err=}, {type(err)=}")
 
     test_get_metadata()
     test_predict_bytes()
