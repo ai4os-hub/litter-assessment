@@ -19,8 +19,9 @@ class ResultPlot:
         returns colors and labels for plot as specified in config.yaml file
         """
         wd = os.getcwd()
-        path = os.path.join(wd, 'litter_assessment_service/configs.yaml')
-        #path = os.path.join(wd, 'litter-assessment/litter_assessment_service/configs.yaml')
+        path = os.path.join(wd, 'litter-assessment/litter_assessment_service/configs.yaml')
+        if not os.path.exists(path):
+            path = os.path.join(wd, 'litter_assessment_service/configs.yaml')
 
         with open(path, 'rb') as f:
             params = yaml.safe_load(f)
