@@ -1,0 +1,18 @@
+metadata_version: 2.0.0
+title: litter_assessment_service
+summary: Integration of DeepaaS API and litter assessment software
+description: '"litter_assessment_service is an application using the DEEPaaS API.\n" "Write additional information for your users (how to predict, how to retrain," "dataset description, training description, etc)."'
+dates:
+  created: '2023-08-14'
+  updated: '2024-08-12'
+links:
+  source_code: https://github.com/ai4os-hub/litter-assessment
+  docker_image: ai4oshub/litter-assessment
+  ai4_template: ai4-template/1.9.9
+tags:
+- docker
+- api-v2
+- vo.imagine-ai.eu
+tasks: []
+categories: []
+libraries: []
