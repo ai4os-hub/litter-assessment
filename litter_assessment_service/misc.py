@@ -71,26 +71,26 @@ def mount_nextcloud(frompath, topath):
     return output, error
 
 
-def launch_cmd(logdir, port):
-    subprocess.call(["tensorboard",
-                     "--logdir", f"{logdir}",
-                     "--port", f"{port}",
-                     "--host", "0.0.0.0"])
+# def launch_cmd(logdir, port):
+#     subprocess.call(["tensorboard",
+#                      "--logdir", f"{logdir}",
+#                      "--port", f"{port}",
+#                      "--host", "0.0.0.0"])
 
 
-def launch_tensorboard(logdir, port=6006):
-    """
-    Run Tensorboard on a separate Process on behalf of the user
+# def launch_tensorboard(logdir, port=6006):
+#     """
+#     Run Tensorboard on a separate Process on behalf of the user
 
-    Parameters
-    ==========
-    * logdir: str, pathlib.Path
-        Folder path to tensorboard logs.
-    * port: int
-        Port to use for the monitoring webserver.
-    """
-    subprocess.run(
-        ["fuser", "-k", f"{port}/tcp"]  # kill any previous process in that port
-    )
-    p = Process(target=launch_cmd, args=(logdir, port), daemon=True)
-    p.start()
+#     Parameters
+#     ==========
+#     * logdir: str, pathlib.Path
+#         Folder path to tensorboard logs.
+#     * port: int
+#         Port to use for the monitoring webserver.
+#     """
+#     subprocess.run(
+#         ["fuser", "-k", f"{port}/tcp"]  # kill any previous process in that port
+#     )
+#     p = Process(target=launch_cmd, args=(logdir, port), daemon=True)
+#     p.start()
