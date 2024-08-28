@@ -165,7 +165,12 @@ def predict(**kwargs):
     Run inference on uploaded image(s) and run "save_plot(**kwargs)" 
     for the resulting classifications
     """
-    warm()
+    global model_PLD, model_PLQ
+    model_name_PLD = "litter-assessment/models/PLD_CNN.h5"
+    model_name_PLQ = "litter-assessment/models/PLQ_CNN.h5"
+    model_PLD = preprocessing.warm(model_name_PLD)
+    model_PLQ = preprocessing.warm(model_name_PLQ)
+
     data = kwargs["files"]
     image_names, image_files = get_input_data(data)
     to_path = 'rshare:iMagine_UC1/results'
