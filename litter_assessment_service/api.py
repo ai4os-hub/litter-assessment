@@ -179,7 +179,9 @@ def predict(**kwargs):
 
     # with tempfile.TemporaryDirectory() as tmp_dir:
     for name, file in zip(image_names, image_files):
+        name = os.path.basename(name)
         output_path = os.path.join(tmp_dir, name[:-4])
+        print(f'changed output path: {output_path}')
         if data.content_type=='application/octet-stream':
             image = get_arr_from_bin(file)
         else:
@@ -209,7 +211,6 @@ def predict(**kwargs):
                 print(f'no output type selected')
 
         elif kwargs["PLD_plot"]:
-            print('starting PLD again')
             return_plot(results=results_PLD, type='PLD', output_path=output_path)
             plot_path=f'{output_path}_PLD.jpg'
             if kwargs["output_type"]=='Download':
