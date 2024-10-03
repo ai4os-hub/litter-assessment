@@ -1,10 +1,15 @@
 {
-  "title": "litter_assessment_service",
-  "summary": "Integration of DeepaaS API and litter assessment software",
+  "title": "Litter assessment",
+  "summary": "AI-powered plastic litter counter: from drone footage to cleaner waters",
   "description": [
-    "litter_assessment_service is an application using the DEEPaaS API.\n",
-    "Write additional information for your users (how to predict, how to retrain,",
-    "dataset description, training description, etc)."
+    "The service provides an operational environment for the detection and quantification of plastic litter floating on the water surface.\n",
+    "It allows users to ingest drone footage of their area of interest to get back an analysis of the presence and count of litter items.\n",
+    "Aquatic Litter Monitoring system offers precise, AI-driven analysis for accurately assessing aquatic litter, enabling targeted pollution control.\n",
+    "The Aquatic Litter Monitoring system ensures consistent, standardized litter datasets by automating image processing, empowering efficient decision-making and environmental action.\n",
+    "Aquatic Litter Monitoring system’s user-friendly approach extends to citizen scientists, fostering widespread involvement and awareness for a cleaner aquatic environment.",
+    "<br>",
+    "<img class='fit', width='50%', src='https://raw.githubusercontent.com/ai4os-hub/litter-assessment/main/data/samples/cambodia1.png'/>\n",
+    "<img class='fit', width='50%', src='https://raw.githubusercontent.com/ai4os-hub/litter-assessment/main/data/samples/cambodia1-plq.png'/>\n",
   ],
   "keywords": [
     "docker",
