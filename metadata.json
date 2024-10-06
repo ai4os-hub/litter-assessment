@@ -6,9 +6,12 @@
     "It allows users to ingest drone footage of their area of interest to get back an analysis of the presence and count of litter items.\n",
     "Aquatic Litter Monitoring system offers precise, AI-driven analysis for accurately assessing aquatic litter, enabling targeted pollution control.\n",
     "The Aquatic Litter Monitoring system ensures consistent, standardized litter datasets by automating image processing, empowering efficient decision-making and environmental action.\n",
-    "Aquatic Litter Monitoring system’s user-friendly approach extends to citizen scientists, fostering widespread involvement and awareness for a cleaner aquatic environment.",
+    "Aquatic Litter Monitoring system’s user-friendly approach extends to citizen scientists, fostering widespread involvement and awareness for a cleaner aquatic environment.\n",
+    
     "<br/>",
     "<img class='fit', width='50%', src='https://raw.githubusercontent.com/ai4os-hub/litter-assessment/main/data/samples/cambodia1.png'/>\n",
+    
+    "<br/>",
     "<img class='fit', width='50%', src='https://raw.githubusercontent.com/ai4os-hub/litter-assessment/main/data/samples/cambodia1-plq.png'/>\n"
   ],
   "keywords": [
