@@ -22,12 +22,15 @@ class PredictArgsSchema(Schema):
         load_default=True,
         description='Whether a quantification plot should be provided.',
         metadata={"enum": [True, False]})
-    
+
     accept = fields.Str(
         location="headers",
-        validate=validate.OneOf(['image/png', 'zip']),
+        validate=validate.OneOf(['application/zip']),
+        # validate=validate.OneOf(['application/zip', 'image/png']),
+        # FIXME: "image/png" accept option is not working as expected, because it
+        # returns a ZIP, not an image
         description='Choose zip if you want PLD and PLQ')
-    
+
     output_type = fields.Str(
         load_default='Download',
         metadata={"enum": ['Download', 'Nextcloud']},
