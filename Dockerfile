@@ -72,12 +72,20 @@ RUN git clone --depth 1 -b $branch https://github.com/ai4os-hub/litter-assessmen
 # Download network weights
 ENV SWIFT_CONTAINER=https://share.services.ai4os.eu/index.php/s/HQmXS7mcDK82sz3/download/
 ENV MODEL_TAR=models.tar.gz
+ENV FACE_DETECTION_CONTAINER=https://share.services.ai4os.eu/index.php/s/amnYEs3qn8rTszS/
+ENV FACE_DETECTION_TAR=face_detection_model.tar.gz
 
 RUN curl --insecure -o ./litter-assessment/models/${MODEL_TAR} \
     ${SWIFT_CONTAINER}${MODEL_TAR}
 
 RUN cd litter-assessment/models && \
      tar -xf ${MODEL_TAR}
+    
+RUN curl --insecure -o ./litter-assessment/models/${FACE_DETECTION_TAR} \
+    ${FACE_DETECTION_CONTAINER}${FACE_DETECTION_TAR}
+
+RUN cd litter-assessment/models && \
+    tar -xf ${FACE_DETECTION_TAR}
 
 RUN cd /srv/litter-assessment
 
