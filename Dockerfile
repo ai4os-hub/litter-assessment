@@ -88,7 +88,7 @@ RUN curl --insecure -o ./litter-assessment/models/${FACE_DETECTION_TAR} \
 RUN cd litter-assessment/models && \
     tar -xf ${FACE_DETECTION_TAR}
 
-RUN cd /srv/litter-assessment
+WORKDIR /srv/litter-assessment
 
 # Open ports (deepaas, monitoring, ide)
 EXPOSE 5000 6006 8888
