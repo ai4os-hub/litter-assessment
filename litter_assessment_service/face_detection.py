@@ -9,7 +9,7 @@ from litter_assessment_service import imageslicer
 
 
 # load CNN face detection model
-cnn_face_detector = dlib.cnn_face_detection_model_v1('litter-assessment/models/mmod_human_face_detector.dat')
+cnn_face_detector = dlib.cnn_face_detection_model_v1('models/mmod_human_face_detector.dat')
 
 upsample_num = 1
 rotate = True
