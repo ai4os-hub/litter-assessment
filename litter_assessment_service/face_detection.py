@@ -10,7 +10,7 @@ from litter_assessment_service import imageslicer
 
 # load CNN face detection model
 wd = os.getcwd()
-model_name='litter-assessment/models/mmod_human_face_detector.dat'
+model_name='models/mmod_human_face_detector.dat'
 path = os.path.join(wd, model_name)
 cnn_face_detector = dlib.cnn_face_detection_model_v1(path)
 
