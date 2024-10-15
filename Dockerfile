@@ -30,6 +30,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
         curl \
         nano \
         python3-opencv \
+        libgl1 \
     && rm -rf /var/lib/apt/lists/*
 
 # Update python packages
