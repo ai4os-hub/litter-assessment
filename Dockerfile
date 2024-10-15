@@ -29,8 +29,6 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
         git \
         curl \
         nano \
-        python3-opencv \
-        libgl1 \
     && rm -rf /var/lib/apt/lists/*
 
 # Update python packages
@@ -74,7 +72,7 @@ RUN git clone --depth 1 -b $branch https://github.com/ai4os-hub/litter-assessmen
 # Download network weights
 ENV SWIFT_CONTAINER=https://share.services.ai4os.eu/index.php/s/HQmXS7mcDK82sz3/download/
 ENV MODEL_TAR=models.tar.gz
-ENV FACE_DETECTION_CONTAINER=https://share.services.ai4os.eu/index.php/s/amnYEs3qn8rTszS/
+ENV FACE_DETECTION_CONTAINER=https://share.services.ai4os.eu/index.php/s/amnYEs3qn8rTszS/download/
 ENV FACE_DETECTION_TAR=face_detection_model.tar.gz
 
 RUN curl --insecure -o ./litter-assessment/models/${MODEL_TAR} \
