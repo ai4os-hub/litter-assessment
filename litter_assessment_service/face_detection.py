@@ -6,7 +6,7 @@ import tempfile
 import pickle
 
 from PIL import Image
-from litter_assessment.imageslicer import imageslicer_modelinput
+from litter_assessment_service import imageslicer
 
 
 #load file directory and cnn model
@@ -66,7 +66,7 @@ def anonymize_images(image_file, image_names):
         img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
         shape = img.shape
-        x, grid = imageslicer_modelinput(file_path, 128, file_format = 'JPG', cut_im_sect = None, image_size_PLD = None)
+        x, grid = imageslicer.imageslicer_modelinput(file_path, 128, file_format = 'JPG', cut_im_sect = None, image_size_PLD = None)
         grid_row_len, grid_col_len = grid
         number_tiles = x.shape[0]
 
