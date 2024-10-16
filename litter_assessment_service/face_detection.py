@@ -5,12 +5,6 @@ import tempfile
 from PIL import Image
 from litter_assessment_service import imageslicer
 
-# load CNN face detection model
-wd = os.getcwd()
-model_name='litter-assessment/models/mmod_human_face_detector.dat'
-path = os.path.join(wd, model_name)
-cnn_face_detector = dlib.cnn_face_detection_model_v1(path)
-
 upsample_num = 1
 rotate = True
 threshold_score = 0.5
@@ -33,7 +27,7 @@ def get_tile_coordinates(tile, grid_col_len):
 
     return top_glob, right_glob, bottom_glob, left_glob
 
-def analyse_tiles_batch(tiles, tile_nums, global_image, grid_col_len, num_faces):
+def analyse_tiles_batch(tiles, tile_nums, global_image, grid_col_len, num_faces, cnn_face_detector):
     # Convert each tile in the batch to a numpy array for processing
     img_arrays = [np.array(tile) for tile in tiles]
 
@@ -54,6 +48,13 @@ def analyse_tiles_batch(tiles, tile_nums, global_image, grid_col_len, num_faces)
 
 # iterate over images in directory
 def anonymize_images(image_file, image_names):
+    global cnn_face_detector
+    # load CNN face detection model
+    wd = os.getcwd()
+    model_name='litter-assessment/models/mmod_human_face_detector.dat'
+    path = os.path.join(wd, model_name)
+    cnn_face_detector = dlib.cnn_face_detection_model_v1(path)
+
     print(f'starting anonymize_images now')
     dir = tempfile.mkdtemp()
 
@@ -86,7 +87,7 @@ def anonymize_images(image_file, image_names):
             # If batch size is reached or last tile, process the batch
             if len(tile_batch) == batch_size or i == number_tiles - 1:
                 print(f'Processing batch of {len(tile_batch)} tiles...')
-                num_faces, img = analyse_tiles_batch(tile_batch, tile_nums, img, grid_col_len, num_faces)
+                num_faces, img = analyse_tiles_batch(tile_batch, tile_nums, img, grid_col_len, num_faces, cnn_face_detector)
 
                 # Clear the batch for next round
                 tile_batch = []
@@ -97,10 +98,10 @@ def anonymize_images(image_file, image_names):
                 rotated_batch_180 = [rotate_180(tile) for tile in tile_batch]
 
                 # Process rotated 90-degree tiles
-                num_faces, img = analyse_tiles_batch(rotated_batch_90, tile_nums, img, grid_col_len, num_faces)
+                num_faces, img = analyse_tiles_batch(rotated_batch_90, tile_nums, img, grid_col_len, num_faces, cnn_face_detector)
 
                 # Process rotated 180-degree tiles
-                num_faces, img = analyse_tiles_batch(rotated_batch_180, tile_nums, img, grid_col_len, num_faces)
+                num_faces, img = analyse_tiles_batch(rotated_batch_180, tile_nums, img, grid_col_len, num_faces, cnn_face_detector)
 
         if num_faces > 0:
             path = f'{dir}/{image_name}.jpg'
