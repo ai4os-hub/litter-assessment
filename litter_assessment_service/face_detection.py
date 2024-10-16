@@ -52,6 +52,7 @@ def analyse_tile(image, num_faces, tile_num, global_image, grid_col_len):
 
 # iterate over images in directory
 def anonymize_images(image_file, image_names):
+    print(f'starting anonymize_images now')
     dir = tempfile.mkdtemp()
     for count, image_path in enumerate(image_file):
         #print(f'This is the image in image_file: {image_path}')
@@ -69,7 +70,9 @@ def anonymize_images(image_file, image_names):
         number_tiles = x.shape[0]
 
         # run face detection on every sliced image tile
+        print(f'starting to iterate over tiles now')
         for i in range(number_tiles):
+            print(f'run for tile number {i}')
             tile = x[i, :, :, :]
             tile = np.multiply(tile, 255).astype('uint8')
             tile_image = Image.fromarray(tile)
