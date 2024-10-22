@@ -19,7 +19,7 @@ LABEL version='0.0.1'
 # Integration of DeepaaS API and litter assessment software
 
 # What user branch to clone [!]
-ARG branch=main
+ARG branch=tab_out
 
 # Install Ubuntu packages
 # - gcc is needed in Pytorch images because deepaas installation might break otherwise (see docs) (it is already installed in tensorflow images)
