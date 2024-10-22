@@ -32,15 +32,22 @@ def test_get_metadata():
 
 def test_predict_single_im():
     models_url = "https://share.services.ai4os.eu/index.php/s/HQmXS7mcDK82sz3/download/models.tar.gz"
-
+    face_detection_url = "https://share.services.ai4os.eu/index.php/s/amnYEs3qn8rTszS/download/face_detection_model.tar.gz"
     try:
     # call download_file function
         models_archived = download_file(models_url)
+        face_detection_archived= download_file(face_detection_url)
         # dearchive downloaded .tar.gz file
         with tarfile.open(models_archived, 'r:gz') as ms:
             ms.extractall(f"{BASE_PATH}/litter-assessment/models")
 
         os.remove(models_archived)
+
+        with tarfile.open(face_detection_archived, 'r:gz') as ms:
+            ms.extractall(f"{BASE_PATH}/litter-assessment/models")
+
+        os.remove(face_detection_archived)
+
     except Exception as err:
         logging.error(f"Unexpected {err=}, {type(err)=}")
 
@@ -50,23 +57,27 @@ def test_predict_single_im():
     tmp_fpath = os.path.join(test_data_path, 'tmp_file.jpg')
     shutil.copyfile(file_path, tmp_fpath)
     file = UploadedFile(name='data', filename=tmp_fpath, content_type='image/jpg', original_filename='test_image')
-    kwargs = {'files': file, 'output_type':'Download', 'PLD_plot': True, 'PLQ_plot': True}
+    kwargs = {'files': file, 'output_type':'Download', 'PLD_plot': True, 'PLQ_plot': True, 'face_detection': False}
     api.predict(**kwargs)
 
 def test_predict_zip():
     models_url = "https://share.services.ai4os.eu/index.php/s/HQmXS7mcDK82sz3/download/models.tar.gz"
-
+    face_detection_url = "https://share.services.ai4os.eu/index.php/s/amnYEs3qn8rTszS/download/face_detection_model.tar.gz"
     try:
     # call download_file function
         models_archived = download_file(models_url)
-        print(f'extracting the model successfull! for predicting zip')
-        print(f'extracting model to: {BASE_PATH}/litter-assessment/models')
-
+        face_detection_archived= download_file(face_detection_url)
         # dearchive downloaded .tar.gz file
         with tarfile.open(models_archived, 'r:gz') as ms:
-            ms.extractall(f"{BASE_PATH}/models")
-        
+            ms.extractall(f"{BASE_PATH}/litter-assessment/models")
+
         os.remove(models_archived)
+
+        with tarfile.open(face_detection_archived, 'r:gz') as ms:
+            ms.extractall(f"{BASE_PATH}/litter-assessment/models")
+
+        os.remove(face_detection_archived)
+
     except Exception as err:
         logging.error(f"Unexpected {err=}, {type(err)=}")
 
@@ -76,21 +87,27 @@ def test_predict_zip():
     tmp_fpath = os.path.join(test_data_path, 'tmp_file.zip')
     shutil.copyfile(file_path, tmp_fpath)
     file = UploadedFile(name='data', filename=tmp_fpath, content_type='application/zip', original_filename='test_zip')
-    kwargs = {'files': file, 'output_type':'Download', 'PLD_plot': True, 'PLQ_plot': True}
+    kwargs = {'files': file, 'output_type':'Download', 'PLD_plot': True, 'PLQ_plot': True, 'face_detection': False}
     api.predict(**kwargs)
 
 def test_predict_bytes():
     models_url = "https://share.services.ai4os.eu/index.php/s/HQmXS7mcDK82sz3/download/models.tar.gz"
+    face_detection_url = "https://share.services.ai4os.eu/index.php/s/amnYEs3qn8rTszS/download/face_detection_model.tar.gz"
     logging.basicConfig(level=logging.DEBUG, format="%(levelname)s: %(message)s")
     try:
     # call download_file function
         models_archived = download_file(models_url)
+        face_detection_archived= download_file(face_detection_url)
         # dearchive downloaded .tar.gz file
         with tarfile.open(models_archived, 'r:gz') as ms:
             ms.extractall(f"{BASE_PATH}/litter-assessment/models")
 
-        # may delete the *tar.gz afterwards
         os.remove(models_archived)
+
+        with tarfile.open(face_detection_archived, 'r:gz') as ms:
+            ms.extractall(f"{BASE_PATH}/litter-assessment/models")
+
+        os.remove(face_detection_archived)
     except Exception as err:
         logging.error(f"Unexpected {err=}, {type(err)=}")
 
@@ -100,7 +117,7 @@ def test_predict_bytes():
     image=open(os.path.join(os.getcwd(), 'test_images', file_path), 'rb')
     bin_image = image.read()
     file = UploadedFile(name='data', filename=bin_image, content_type='application/octet-stream', original_filename='test_image.JPG')
-    kwargs = {'files': file, 'output_type':'Download', 'PLD_plot': True, 'PLQ_plot': True}
+    kwargs = {'files': file, 'output_type':'Download', 'PLD_plot': True, 'PLQ_plot': True, 'face_detection': False}
     api.predict(**kwargs)
 
 def download_file(url):

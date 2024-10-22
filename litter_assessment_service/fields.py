@@ -22,6 +22,12 @@ class PredictArgsSchema(Schema):
         load_default=True,
         description='Whether a quantification plot should be provided.',
         metadata={"enum": [True, False]})
+    
+    face_detection = fields.Bool(
+        required = False,
+        load_default=False,
+        description='Whether the face detection model analyses the image first.',
+        metadata={"enum": [True, False]})
 
     accept = fields.Str(
         location="headers",

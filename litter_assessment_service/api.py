@@ -37,7 +37,7 @@ import numpy as np
 
 from litter_assessment_service.misc import _catch_error
 from litter_assessment_service.plotting import ResultPlot
-from litter_assessment_service import config, fields, classification, preprocessing
+from litter_assessment_service import config, fields, classification, preprocessing, face_detection
 
 BASE_DIR = Path(__file__).resolve().parents[1]
 
@@ -173,6 +173,8 @@ def predict(**kwargs):
 
     data = kwargs["files"]
     image_names, image_files = get_input_data(data)
+    if kwargs["face_detection"]:
+        image_files = face_detection.anonymize_images(image_files, image_names)
     to_path = 'rshare:iMagine_UC1/results'
 
     tmp_dir = tempfile.mkdtemp()
