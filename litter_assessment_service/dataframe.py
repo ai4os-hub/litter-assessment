@@ -14,6 +14,8 @@ class results_df:
     def load_configs(self):
         wd = os.getcwd()
         path = os.path.join(wd, 'litter-assessment/litter_assessment_service/configs.yaml')
+        if not os.path.exists(path):
+            path = os.path.join(wd, 'litter_assessment_service/configs.yaml')
         with open(path, 'rb') as f:
             params = yaml.safe_load(f)
             label = params['label'][f'label {self.type}']
