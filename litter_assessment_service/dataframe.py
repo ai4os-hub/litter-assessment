@@ -1,4 +1,5 @@
 import yaml
+import os
 import numpy as np
 import pandas as pd
 
@@ -11,7 +12,9 @@ class results_df:
         self.df = []
 
     def load_configs(self):
-        with open('litter-assessment/litter_assessment_service/configs.yaml', 'r') as f:
+        wd = os.getcwd()
+        path = os.path.join(wd, 'litter-assessment/litter_assessment_service/configs.yaml')
+        with open(path, 'rb') as f:
             params = yaml.safe_load(f)
             label = params['label'][f'label {self.type}']
             correction_params = params['correction parameters'][f'params_{self.type}']
@@ -21,7 +24,7 @@ class results_df:
         norm_GSD = 0.2 # cm/px 
         alt_correction = self.gsd**2 / norm_GSD**2
         return alt_correction
-    
+
 class PLD_df(results_df):
     def __init__(self, *args):
         super().__init__(*args)
