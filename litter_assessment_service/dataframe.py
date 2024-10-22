@@ -11,7 +11,7 @@ class results_df:
         self.df = []
 
     def load_configs(self):
-        with open('configs.yaml', 'r') as f:
+        with open('litter-assessment/litter_assessment_service/configs.yaml', 'r') as f:
             params = yaml.safe_load(f)
             label = params['label'][f'label {self.type}']
             correction_params = params['correction parameters'][f'params_{self.type}']
