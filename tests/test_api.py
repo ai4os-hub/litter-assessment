@@ -57,7 +57,7 @@ def test_predict_single_im():
     tmp_fpath = os.path.join(test_data_path, 'tmp_file.jpg')
     shutil.copyfile(file_path, tmp_fpath)
     file = UploadedFile(name='data', filename=tmp_fpath, content_type='image/jpg', original_filename='test_image')
-    kwargs = {'files': file, 'output_type':'Download', 'PLD_plot': True, 'PLQ_plot': True}
+    kwargs = {'files': file, 'output_type':'Download', 'PLD_plot': True, 'PLQ_plot': True, 'face_detection': False}
     api.predict(**kwargs)
 
 def test_predict_zip():
@@ -87,7 +87,7 @@ def test_predict_zip():
     tmp_fpath = os.path.join(test_data_path, 'tmp_file.zip')
     shutil.copyfile(file_path, tmp_fpath)
     file = UploadedFile(name='data', filename=tmp_fpath, content_type='application/zip', original_filename='test_zip')
-    kwargs = {'files': file, 'output_type':'Download', 'PLD_plot': True, 'PLQ_plot': True}
+    kwargs = {'files': file, 'output_type':'Download', 'PLD_plot': True, 'PLQ_plot': True, 'face_detection': False}
     api.predict(**kwargs)
 
 def test_predict_bytes():
@@ -117,7 +117,7 @@ def test_predict_bytes():
     image=open(os.path.join(os.getcwd(), 'test_images', file_path), 'rb')
     bin_image = image.read()
     file = UploadedFile(name='data', filename=bin_image, content_type='application/octet-stream', original_filename='test_image.JPG')
-    kwargs = {'files': file, 'output_type':'Download', 'PLD_plot': True, 'PLQ_plot': True}
+    kwargs = {'files': file, 'output_type':'Download', 'PLD_plot': True, 'PLQ_plot': True, 'face_detection': False}
     api.predict(**kwargs)
 
 def download_file(url):

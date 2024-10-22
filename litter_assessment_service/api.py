@@ -173,7 +173,8 @@ def predict(**kwargs):
 
     data = kwargs["files"]
     image_names, image_files = get_input_data(data)
-    image_files = face_detection.anonymize_images(image_files, image_names)
+    if kwargs["face_detection"]:
+        image_files = face_detection.anonymize_images(image_files, image_names)
     to_path = 'rshare:iMagine_UC1/results'
 
     tmp_dir = tempfile.mkdtemp()
