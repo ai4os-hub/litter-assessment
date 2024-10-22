@@ -34,10 +34,11 @@ from PIL import Image
 
 import pkg_resources
 import numpy as np
+import pandas as pd
 
 from litter_assessment_service.misc import _catch_error
 from litter_assessment_service.plotting import ResultPlot
-from litter_assessment_service import config, fields, classification, preprocessing, face_detection
+from litter_assessment_service import config, fields, classification, preprocessing, face_detection, dataframe
 
 BASE_DIR = Path(__file__).resolve().parents[1]
 
@@ -183,20 +184,25 @@ def predict(**kwargs):
     for name, file in zip(image_names, image_files):
         name = os.path.basename(name)
         output_path = os.path.join(tmp_dir, name[:-4])
-        print(f'changed output path: {output_path}')
+        excel_path = f'{output_path}_litter_items.xlsx'
         if data.content_type=='application/octet-stream':
             image = get_arr_from_bin(file)
         else:
             image_or = Image.open(file)
             image = np.array(image_or)
         results_PLD = classification.PLD_result(image, image_names, model_PLD)
+        df_PLD = dataframe.PLD_df(results_PLD, 'PLD').get_dataframe()
 
         if kwargs["PLD_plot"] and kwargs["PLQ_plot"]:
             return_plot(results=results_PLD, type='PLD', output_path=output_path)
             results_PLQ = classification.PLQ_result(results_PLD.c_matrix,
                                                     image,
                                                     image_names, model_PLQ)
+            df_PLQ = dataframe.PLQ_df(results_PLQ, 'PLQ').get_dataframe()
             return_plot(results=results_PLQ, type='PLQ', output_path=output_path)
+            with pd.ExcelWriter(excel_path) as writer:
+                df_PLD.to_excel(writer, sheet_name='Litter Detection', index=False)
+                df_PLQ.to_excel(writer, sheet_name='Litter Quantification', index=False)
             if kwargs["output_type"]=='Download':
                 shutil.make_archive(tmp_dir, format = 'zip', root_dir = tmp_dir)
                 zip_path = tmp_dir + '.zip'
@@ -225,7 +231,6 @@ def predict(**kwargs):
                 print('no output type selected')
 
         elif kwargs["PLQ_plot"]:
-            print(f'starting PLQ again')
             results_PLQ = classification.PLQ_result(results_PLD.c_matrix,
                                                     image,
                                                     image_names, model_PLQ)
