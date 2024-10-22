@@ -201,8 +201,8 @@ def predict(**kwargs):
             df_PLQ = dataframe.PLQ_df(results_PLQ, 'PLQ').get_dataframe()
             return_plot(results=results_PLQ, type='PLQ', output_path=output_path)
             with pd.ExcelWriter(excel_path) as writer:
-                df_PLD.to_excel(writer, sheet_name='Litter Detection', index=False)
-                df_PLQ.to_excel(writer, sheet_name='Litter Quantification', index=False)
+                df_PLD.to_excel(writer, sheet_name='Litter Detection', index=True)
+                df_PLQ.to_excel(writer, sheet_name='Litter Quantification', index=True)
             if kwargs["output_type"]=='Download':
                 shutil.make_archive(tmp_dir, format = 'zip', root_dir = tmp_dir)
                 zip_path = tmp_dir + '.zip'
