@@ -1,6 +1,6 @@
 metadata_version: 2.0.0
 title: Litter assesment
-summary: AI-powered plastic litter counter: from drone footage to cleaner waters to evaluate litter in images.
+summary: AI-powered plastic litter counter: from drone footage to cleaner waters.
 description: |-
   This is an application to evaluate litter in images.
   The service provides an operational environment for the detection and quantification of plastic litter floating on the water surface.
