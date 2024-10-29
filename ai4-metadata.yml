@@ -1,8 +1,15 @@
 metadata_version: 2.0.0
 title: Litter assesment
-summary: Evaluate litter in images.
+summary: AI-powered plastic litter counter: from drone footage to cleaner waters to evaluate litter in images.
 description: |-
   This is an application to evaluate litter in images.
+  The service provides an operational environment for the detection and quantification of plastic litter floating on the water surface.
+  It allows users to ingest drone footage of their area of interest to get back an analysis of the presence and count of litter items.
+  Aquatic Litter Monitoring system offers precise, AI-driven analysis for accurately assessing aquatic litter, enabling targeted pollution control.
+  The Aquatic Litter Monitoring system ensures consistent, standardized litter datasets by automating image processing, empowering efficient decision-making and environmental action.
+  Aquatic Litter Monitoring system’s user-friendly approach extends to citizen scientists, fostering widespread involvement and awareness for a cleaner aquatic environment.
+  
+  <img class='fit', width='50%', src='https://raw.githubusercontent.com/ai4os-hub/litter-assessment/main/data/samples/cambodia1-plq.png'/>
 dates:
   created: '2023-08-14'
   updated: '2024-08-12'
