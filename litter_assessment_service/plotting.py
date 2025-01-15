@@ -52,7 +52,6 @@ class ResultPlot:
 
         #colorbar
         #add_ax_pos = [0.71, 0.05+0.075, 0.02, 0.8]
-        #add_ax_pos = [0.80, 0.05+0.075, 0.02, 0.8]
         #cbar_ax = fig.add_axes(add_ax_pos)
         cbar_ax = fig.add_axes()
         cbar = plt.colorbar(heatmap, cax=cbar_ax)
