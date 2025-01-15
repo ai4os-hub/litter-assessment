@@ -47,12 +47,13 @@ class ResultPlot:
         cMap = colors.ListedColormap(color_list)
         fig = plt.figure(figsize=(9,4.5))
         ax = fig.add_subplot()
-        ax.set_position([-0.1, 0.05+0.075, 1, 0.8])
+        #ax.set_position([-0.1, 0.05+0.075, 1, 0.8])
         heatmap = ax.pcolor(c_matrix_im, cmap=cMap)
 
         #colorbar
-        add_ax_pos = [0.71, 0.05+0.075, 0.02, 0.8]
-        cbar_ax = fig.add_axes(add_ax_pos)
+        #add_ax_pos = [0.71, 0.05+0.075, 0.02, 0.8]
+        #cbar_ax = fig.add_axes(add_ax_pos)
+        cbar_ax = fig.add_axes()
         cbar = plt.colorbar(heatmap, cax=cbar_ax)
         cbar.ax.get_yaxis().set_ticks([])
         for j, lab in enumerate([label[i] for i in self.detected_classes]):
