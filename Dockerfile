@@ -29,6 +29,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
         git \
         curl \
         nano \
+        cmake \
     && rm -rf /var/lib/apt/lists/*
 
 # Update python packages
