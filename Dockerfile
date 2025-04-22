@@ -21,6 +21,9 @@ LABEL version='0.0.1'
 # What user branch to clone [!]
 ARG branch=main
 
+RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
+    apt-get install cmake
+
 # Install Ubuntu packages
 # - gcc is needed in Pytorch images because deepaas installation might break otherwise (see docs) (it is already installed in tensorflow images)
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
@@ -32,7 +35,6 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
         python3-setuptools \
         python3-pip \
         python3-wheel \
-        cmake \
     && rm -rf /var/lib/apt/lists/*
 
 # Update python packages
