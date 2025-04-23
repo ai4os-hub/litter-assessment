@@ -9,7 +9,7 @@ description: |-
     The Aquatic Litter Monitoring system ensures consistent, standardized litter datasets by automating image processing, empowering efficient decision-making and environmental action.
     Aquatic Litter Monitoring system’s user-friendly approach extends to citizen scientists, fostering widespread involvement and awareness for a cleaner aquatic environment.
     
-    <img class='fit', width='50%', src='https://raw.githubusercontent.com/ai4os-hub/litter-assessment/main/data/samples/iMagine_UC1.png'/>
+    <img class='fit', width='90%', src='https://raw.githubusercontent.com/ai4os-hub/litter-assessment/main/data/samples/iMagine_UC1.png'/>
     
 dates:
   created: '2023-08-14'
