@@ -36,11 +36,11 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
     && rm -rf /var/lib/apt/lists/*
 
 # Update python packages
-#RUN python3 --version && \
-#    pip3 install --no-cache-dir --upgrade pip "setuptools<60.0.0" wheel
-
 RUN python3 --version && \
-    pip3 install --no-cache-dir --upgrade pip
+    pip3 install --no-cache-dir --upgrade pip "setuptools<60.0.0" wheel
+
+#RUN python3 --version && \
+#    pip3 install --no-cache-dir --upgrade pip
 
 # TODO: remove setuptools version requirement when [1] is fixed
 # [1]: https://github.com/pypa/setuptools/issues/3301
