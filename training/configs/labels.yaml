@@ -1,0 +1,3 @@
+label:
+    label old: ['Litter-high', 'Litter-low', 'Organic debris', 'Other','Sand-Soil', 'Stones', 'Vegetation', 'Water'] #DO NOT CHANGE
+    label new: ['Water', 'Vegetation', 'Stones', 'Sand-Soil','Other', 'Organic debris', 'Ice']
