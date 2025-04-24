@@ -1,0 +1,47 @@
+label:
+    label old: ['P - bags LPDE thick',
+        'P - bags LPDE',
+        'P - bags robust PET',
+        'P - wrappers under 10cm',
+        'P - wrappers over 10cm', #5
+        'P - bottles PET',
+        'P - polystyrene under 20cm',
+        'P - polystyrene over 20cm',
+        'P - PPCP bottle',
+        'P - PPCP medical waste', #10
+        'P - PPCP other',
+        'P - fishing gear',
+        'P - cup lids, caps and small plastics',
+        'P - other plastics over 20cm',
+        'NP - rubber',            #15
+        'NP - metal',
+        'NP - glass',
+        'NP - other',
+        'NW - sand',
+        'NW - vegetation',        #20
+        'NW - wood',
+        'NW - water',
+        'NW - other']
+    label new: ['P - bags LPDE thick',
+        'P - bags LPDE',
+        'P - bags robust PET',
+        'P - wrappers under 10cm',
+        'P - wrappers over 10cm', #5
+        'P - bottles PET',
+        'P - polystyrene under 20cm',
+        'P - polystyrene over 20cm',
+        'P - PPCP bottle',
+        'P - PPCP medical waste', #10
+        'P - PPCP other',
+        'P - fishing gear',
+        'P - cup lids, caps and small plastics',
+        'P - other plastics over 20cm',
+        'NP - rubber',            #15
+        'NP - metal',
+        'NP - glass',
+        'NP - other',
+        'NW - sand',
+        'NW - vegetation',        #20
+        'NW - wood',
+        'NW - water',
+        'NW - other']
